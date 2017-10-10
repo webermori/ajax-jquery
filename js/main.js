@@ -7,7 +7,7 @@ $(function(){
         // console.log(formArray);
 
         var request = $.ajax({
-            method:"GET",
+            method:"POST",
             url:"post.php",
             data: form,
             dataType: "json"
@@ -20,9 +20,10 @@ $(function(){
         });
 
         request.done(function(e){
-            console.log('done');
-            console.log(e.name);
             console.log(e);
+            for (var k in e) {
+                $(':input[name='+k+']').val(e[k]);
+            }
         });
 
         request.fail(function(e){
